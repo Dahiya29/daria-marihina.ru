@@ -25,6 +25,7 @@
     --sans: 'Jost', sans-serif;
   }
   html { scroll-behavior: smooth; }
+  p, li { hanging-punctuation: first; }
   body { font-family: var(--sans); background: var(--cream); color: var(--ink); line-height: 1.7; font-weight: 300; overflow-x: hidden; }
 
   nav {
@@ -198,7 +199,7 @@
     <li><a href="#about">Обо мне</a></li>
     <li><a href="#cases">Кейсы</a></li>
     <li><a href="#format">Формат</a></li>
-    <li><a href="#contact">Контакт</a></li>
+    <li><a href="#contact">Контакты</a></li>
   </ul>
 </nav>
 
@@ -360,9 +361,9 @@
       <a href="https://t.me/dahiyaa" class="format-link" target="_blank">Узнать подробнее →</a>
     </div>
     <div class="format-card" style="background: var(--navy-light); border-color: transparent;">
-      <p class="format-step" style="color: var(--navy);">Всегда</p>
+      <p class="format-step" style="color: var(--navy);">Формат</p>
       <h3 class="format-title" style="color: var(--navy);">Онлайн, в удобное время</h3>
-      <p class="format-desc" style="color: var(--navy-mid);">Работаю в Zoom или Google Meet. Сессии планируем под ваш график. Всё честно, структурировано и в темпе, который вам подходит.</p>
+      <p class="format-desc" style="color: var(--navy-mid);">Работаю в Zoom, Яндекс Телемост или Jitsi Meet.<br>Сессии планируем под ваш график.<br>Всё честно, структурировано и в темпе, который вам подходит.</p>
       <p class="format-price" style="color: var(--navy);">НКО и благотворительность — бесплатно</p>
       <a href="https://t.me/dahiyaa" class="format-link" style="color: var(--navy); border-color: var(--navy);" target="_blank">Написать →</a>
     </div>
@@ -421,12 +422,13 @@
 </section>
 
 <section class="cta-section" id="contact">
-  <p class="cta-label">Следующий шаг</p>
+  <p class="cta-label">Контакты</p>
   <h2 class="cta-title">Готовы к разговору<br><em>о своём запросе?</em></h2>
   <p class="cta-sub">Первая встреча — бесплатно. Просто напишите мне, и мы найдём удобное время, чтобы разобраться в вашей ситуации.</p>
   <div class="cta-btns">
     <a href="https://t.me/dahiyaa" class="btn-white" target="_blank">Telegram @dahiyaa →</a>
     <a href="https://threads.net/@dahiyaa" class="btn-outline-white" target="_blank">Threads @dahiyaa</a>
+    <a href="https://telemost.yandex.ru/p/eb4bdfd8-7a88-4f97-8679-023e26d278b1?utm_source=invite" class="btn-outline-white" target="_blank">Яндекс Мессенджер</a>
   </div>
 </section>
 
@@ -435,6 +437,7 @@
   <ul class="footer-links">
     <li><a href="https://t.me/dahiyaa" target="_blank">Telegram</a></li>
     <li><a href="https://threads.net/@dahiyaa" target="_blank">Threads</a></li>
+    <li><a href="https://telemost.yandex.ru/p/eb4bdfd8-7a88-4f97-8679-023e26d278b1?utm_source=invite" target="_blank">Яндекс Мессенджер</a></li>
   </ul>
 </footer>
 
@@ -453,6 +456,13 @@
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
   });
+</script>
+
+<script>
+// Fix hanging prepositions
+document.querySelectorAll('p, li, h1, h2, h3').forEach(el => {
+  el.innerHTML = el.innerHTML.replace(/\s(в|и|а|с|к|о|у|за|на|по|из|от|до|не|но|же|то|как|или|что|для|при|без|под|со|об|ко|во)\s/gi, ' $1 ');
+});
 </script>
 </body>
 </html>
