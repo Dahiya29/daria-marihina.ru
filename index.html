@@ -10,9 +10,9 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --cream: #FAF7F2;
-    --cream-mid: #F0EAE0;
-    --sand: #E8DFD0;
+    --cream: #F5F5F5;
+    --cream-mid: #EBEBEB;
+    --sand: #DEDEDE;
     --ink: #1A1916;
     --ink-mid: #4A4740;
     --ink-light: #8A8680;
@@ -20,7 +20,7 @@
     --navy-mid: #3D5180;
     --navy-light: #D4DBF0;
     --gold: #B8935A;
-    --gold-light: #F0E6D4;
+    --gold-light: #EBEBEB;
     --serif: 'Cormorant Garamond', serif;
     --sans: 'Jost', sans-serif;
   }
@@ -32,7 +32,7 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     padding: 1.25rem 5vw;
     display: flex; justify-content: space-between; align-items: center;
-    background: rgba(250, 247, 242, 0.92);
+    background: rgba(245, 245, 245, 0.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(26,25,22,0.08);
   }
@@ -168,6 +168,93 @@
   .footer-links a { font-size: 0.78rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: rgba(255,255,255,0.7); }
 
+
+  /* Modal form */
+  .modal-overlay {
+    display: none;
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(26,25,22,0.6);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal-box {
+    background: #F5F5F5;
+    padding: 3rem;
+    max-width: 480px;
+    width: 90%;
+    position: relative;
+  }
+  .modal-close {
+    position: absolute; top: 1rem; right: 1.25rem;
+    background: none; border: none; font-size: 1.5rem;
+    cursor: pointer; color: var(--ink-mid);
+    line-height: 1;
+  }
+  .modal-title {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .modal-sub {
+    font-size: 0.85rem;
+    color: var(--ink-mid);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    margin-bottom: 0.4rem;
+  }
+  .form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--sand);
+    background: #fff;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus { border-color: var(--navy); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-submit {
+    width: 100%;
+    padding: 0.95rem;
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.2s;
+  }
+  .form-submit:hover { background: var(--navy-mid); }
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 2rem 0;
+  }
+  .form-success p {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+  .form-success span { font-size: 0.85rem; color: var(--ink-mid); }
+
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
   .fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
   .delay-1 { animation-delay: 0.1s; }
@@ -228,7 +315,7 @@
   <div class="forwho-layout">
     <div class="forwho-left">
       <p class="forwho-lead">Я работаю с руководителями, предпринимателями и специалистами, которые хотят двигаться вперёд — но что-то мешает. Это могут быть внешние обстоятельства или внутренние ограничения. Чаще всего — и то, и другое.</p>
-      <a href="https://t.me/dahiyaa" class="btn-primary" target="_blank" style="margin-top: 2rem; display: inline-flex;">Узнать свой запрос →</a>
+      <a href="https://t.me/dahiyaa" class="btn-primary" target="_blank" style="margin-top: 2rem; display: inline-flex;">Записаться на встречу →</a>
     </div>
 
     <div class="scenarios-grid">
@@ -426,6 +513,7 @@
   <h2 class="cta-title">Готовы к разговору<br><em>о своём запросе?</em></h2>
   <p class="cta-sub">Первая встреча — бесплатно. Просто напишите мне, и мы найдём удобное время, чтобы разобраться в вашей ситуации.</p>
   <div class="cta-btns">
+      <button class="btn-white" onclick="openModal()" style="cursor:pointer;">Оставить заявку →</button>
     <a href="https://t.me/dahiyaa" class="btn-white" target="_blank">Telegram @dahiyaa →</a>
     <a href="https://threads.net/@dahiyaa" class="btn-outline-white" target="_blank">Threads @dahiyaa</a>
     <a href="https://telemost.yandex.ru/p/eb4bdfd8-7a88-4f97-8679-023e26d278b1?utm_source=invite" class="btn-outline-white" target="_blank">Яндекс Мессенджер</a>
@@ -435,6 +523,7 @@
 <footer>
   <span class="footer-name">Дарья Марихина · Коуч ICF</span>
   <ul class="footer-links">
+    <li><a href="#" onclick="openModal(); return false;">Оставить заявку</a></li>
     <li><a href="https://t.me/dahiyaa" target="_blank">Telegram</a></li>
     <li><a href="https://threads.net/@dahiyaa" target="_blank">Threads</a></li>
     <li><a href="https://telemost.yandex.ru/p/eb4bdfd8-7a88-4f97-8679-023e26d278b1?utm_source=invite" target="_blank">Яндекс Мессенджер</a></li>
@@ -464,5 +553,66 @@ document.querySelectorAll('p, li, h1, h2, h3').forEach(el => {
   el.innerHTML = el.innerHTML.replace(/\s(в|и|а|с|к|о|у|за|на|по|из|от|до|не|но|же|то|как|или|что|для|при|без|под|со|об|ко|во)\s/gi, ' $1 ');
 });
 </script>
+
+<!-- MODAL FORM -->
+<div class="modal-overlay" id="contactModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div id="formContent">
+      <h3 class="modal-title">Оставить заявку</h3>
+      <p class="modal-sub">Заполните форму — я свяжусь с вами в течение суток, чтобы договориться о вводной встрече.</p>
+      <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="674aab25-79c4-411e-929a-f261783ce701">
+        <input type="hidden" name="subject" value="Новая заявка с сайта daria-marihina.ru">
+        <input type="hidden" name="from_name" value="Сайт Дарьи Марихиной">
+        <div class="form-group">
+          <label class="form-label" for="name">Имя</label>
+          <input class="form-input" type="text" id="name" name="name" placeholder="Как вас зовут?" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="phone">Телефон</label>
+          <input class="form-input" type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Контакт в соцсетях</label>
+          <div class="form-row">
+            <input class="form-input" type="text" name="social_nick" placeholder="Ник / username">
+            <input class="form-input" type="text" name="social_network" placeholder="Соцсеть (TG, VK…)">
+          </div>
+        </div>
+        <button class="form-submit" type="submit">Отправить заявку →</button>
+      </form>
+    </div>
+    <div class="form-success" id="formSuccess">
+      <p>Заявка отправлена!</p>
+      <span>Я свяжусь с вами в ближайшее время.</span>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal() {
+  document.getElementById('contactModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('contactModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.getElementById('contactModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const data = new FormData(this);
+  const res = await fetch(this.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+  if (res.ok) {
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+    setTimeout(closeModal, 3000);
+  }
+});
+</script>
+
 </body>
 </html>
