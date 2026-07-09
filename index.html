@@ -255,6 +255,26 @@
   }
   .form-success span { font-size: 0.85rem; color: var(--ink-mid); }
 
+
+  .format-bottom {
+    margin-top: 1.5rem;
+    background: var(--navy-light);
+    padding: 2.5rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .format-bottom-item {}
+  .format-bottom-divider {
+    width: 1px;
+    background: rgba(45,63,108,0.2);
+    align-self: stretch;
+  }
+  @media (max-width: 900px) {
+    .format-bottom { grid-template-columns: 1fr; gap: 2rem; }
+    .format-bottom-divider { width: auto; height: 1px; }
+  }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
   .fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
   .delay-1 { animation-delay: 0.1s; }
@@ -425,10 +445,11 @@
 <section id="format">
   <p class="section-label">Формат и стоимость</p>
   <h2 class="section-title">Как мы будем<br><em>работать вместе</em></h2>
+
   <div class="format-grid">
     <div class="format-card">
       <p class="format-step">Первый шаг</p>
-      <h3 class="format-title">Знакомство и разбор запроса</h3>
+      <h3 class="format-title">Вводная сессия</h3>
       <p class="format-desc">Первая встреча, чтобы понять вашу ситуацию, запрос и формат сотрудничества. Без обязательств — просто разговор, в котором вы уже получите ясность.</p>
       <p class="format-price">Бесплатно · 30 минут</p>
       <a href="https://t.me/dahiyaa" class="format-link" target="_blank">Записаться →</a>
@@ -438,7 +459,7 @@
       <h3 class="format-title">Точечный запрос</h3>
       <p class="format-desc">Если нужно прояснить конкретную ситуацию, принять решение или разобрать острый запрос — работаем в формате отдельной встречи.</p>
       <p class="format-price">7 000 ₽ · до 75 минут</p>
-      <a href="https://t.me/dahiyaa" class="format-link" target="_blank">Обсудить →</a>
+      <a href="https://t.me/dahiyaa" class="format-link" target="_blank">Записаться →</a>
     </div>
     <div class="format-card">
       <p class="format-step">Основной формат</p>
@@ -447,11 +468,26 @@
       <p class="format-price">Контракт на 4 сессии — 28 000 ₽<br><span style="font-size:0.8rem; font-weight:300; color:var(--ink-mid);">Другое количество сессий можно обсудить на вводной встрече</span></p>
       <a href="https://t.me/dahiyaa" class="format-link" target="_blank">Узнать подробнее →</a>
     </div>
-    <div class="format-card" style="background: var(--navy-light); border-color: transparent;">
-      <p class="format-step" style="color: var(--navy);">Формат</p>
+    <div class="format-card">
+      <p class="format-step">Отдельный продукт</p>
+      <h3 class="format-title">Стратегическая сессия</h3>
+      <p class="format-desc">Глубокая работа: жизненные и профессиональные цели, ценности, роли, ресурсы и ограничения, план на горизонт 6–12 месяцев. Вы уходите со своим собственным планом, который составляете сами.</p>
+      <p class="format-price">25 000 ₽ · 1–2 встречи</p>
+      <a href="https://t.me/dahiyaa" class="format-link" target="_blank">Записаться →</a>
+    </div>
+  </div>
+
+  <div class="format-bottom">
+    <div class="format-bottom-item">
+      <p class="format-step" style="color: var(--navy);">Формат работы</p>
       <h3 class="format-title" style="color: var(--navy);">Онлайн, в удобное время</h3>
-      <p class="format-desc" style="color: var(--navy-mid);">Работаю в Zoom, Яндекс Телемост или Jitsi Meet.<br>Сессии планируем под ваш график.<br>Всё честно, структурировано и в темпе, который вам подходит.</p>
-      <p class="format-price" style="color: var(--navy);">НКО и благотворительность — бесплатно</p>
+      <p class="format-desc" style="color: var(--ink-mid);">Работаю в Zoom, Яндекс Телемост или Jitsi Meet. Сессии планируем под ваш график. Всё честно, структурировано и в темпе, который вам подходит.</p>
+    </div>
+    <div class="format-bottom-divider"></div>
+    <div class="format-bottom-item">
+      <p class="format-step" style="color: var(--navy);">Миссия</p>
+      <h3 class="format-title" style="color: var(--navy);">НКО и благотворительность</h3>
+      <p class="format-desc" style="color: var(--ink-mid);">Большая часть моей жизни — помощь некоммерческим организациям и благотворительным фондам. Если вы представляете НКО или благотворительный проект, я буду очень рада предложить вам коучинговое сопровождение бесплатно.</p>
       <a href="https://t.me/dahiyaa" class="format-link" style="color: var(--navy); border-color: var(--navy);" target="_blank">Написать →</a>
     </div>
   </div>
